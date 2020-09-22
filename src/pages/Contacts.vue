@@ -1,6 +1,18 @@
 <template>
     <div>
         <h2>Contacts</h2>
-        <router-link to="/1">1</router-link>
+        <ContactList :contacts="contacts" />
     </div>
 </template>
+
+<script>
+import ContactList from '@/components/ContactList'
+
+export default {
+    name: 'Contacts',
+    props: ['contacts'],
+    components: {
+        ContactList
+    }
+}
+</script>
