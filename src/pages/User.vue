@@ -57,13 +57,13 @@
                     <img class="pic" src="../assets/icons/settings.svg" alt="settings">
                 </a>
                 <a class="undo-link" @click="stepBack">
-                    <img class="pic" src="../assets/icons/undo.svg" alt="settings">
+                    <img class="pic" src="../assets/icons/undo.svg" alt="step-back">
                 </a>
             </ul>
 
 
             <div v-if="setting">
-                <a @click.prevent="onVerification" v-if="!verification" class="link confirm-btn">Confirm</a>
+                <a @click.prevent="onConfirm" v-if="!confirm" class="link confirm-btn">Confirm</a>
                 <div v-else>
                     <p>Are you sure you want to save your changes?</p>
                     <input class="link submit-btn" value="Yes" type="submit">
@@ -82,11 +82,11 @@ export default {
     props: ['contacts'],
     data() {
         return {
-            setting: false,
-            user: {},
             newUser: {},
+            setting: false,
             saveUser: {},
-            verification: false
+            user: {},
+            confirm: false
         }
     },
     mounted() {
@@ -105,18 +105,18 @@ export default {
             this.setting = !this.setting;
             this.newUser = {...this.user};
         },
-        onVerification() {
-            this.verification = !this.verification;
+        onConfirm() {
+            this.confirm = !this.confirm;
         },
         onSubmit() {
-            this.user = this.newUser;
+            this.user = {...this.newUser};
             this.setting = false;
-            this.verification = false;
+            this.confirm = false;
         },
         formReset() {
             this.newUser = {...this.user};
             this.setting = false;
-            this.verification = false;
+            this.confirm = false;
         },
         stepBack() {
             this.user = {...this.saveUser};

@@ -6,6 +6,7 @@
       <router-view 
         :contacts="contacts" 
         @change-user="changeUser"
+        @delete-user="deleteUser"
       />
     </div>
   </div>
@@ -32,6 +33,9 @@ export default {
         }
         return obj;
       });
+    },
+    deleteUser(id) {
+      this.contacts = this.contacts.filter(obj => obj.id !== id);
     }
   }
 }

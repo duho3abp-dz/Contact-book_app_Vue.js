@@ -2,7 +2,7 @@
 <template>
     <div>
         <h2>Contacts</h2>
-        <ContactList :contacts="contacts" />
+        <ContactList :contacts="contacts" @delete-user="userDelete"/>
     </div>
 </template>
 
@@ -15,6 +15,11 @@ export default {
     props: ['contacts'],
     components: {
         ContactList
+    },
+    methods: {
+        userDelete(id) {
+            this.$emit('delete-user', id);
+        }
     }
 }
 </script>
