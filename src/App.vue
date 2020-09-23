@@ -1,12 +1,17 @@
+//---------------------RENDER---------------------//
 <template>
   <div id="app">
     <h1>CONTACT BOOK</h1>
     <div class="wrapper">
-      <router-view :contacts="contacts" />
+      <router-view 
+        :contacts="contacts" 
+        @change-user="changeUser"
+      />
     </div>
   </div>
 </template>
 
+//---------------------LOGIC---------------------//
 <script>
 export default {
   data() {
@@ -18,10 +23,21 @@ export default {
           {id: 4, firstName: 'Vladimir', lastName: 'Putin', phone: '+7 (999) 999-99-99', email: 'putin@putin.ru'}
       ]
     }
+  },
+  methods: {
+    changeUser(newObj) {
+      this.contacts = this.contacts.map(obj => {
+        if (obj.id === newObj.id) {
+          obj = newObj;
+        }
+        return obj;
+      });
+    }
   }
 }
 </script>
 
+//---------------------STYLE---------------------//
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

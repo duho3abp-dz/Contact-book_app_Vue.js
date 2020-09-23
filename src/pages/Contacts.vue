@@ -1,3 +1,4 @@
+//---------------------RENDER---------------------//
 <template>
     <div>
         <h2>Contacts</h2>
@@ -5,6 +6,7 @@
     </div>
 </template>
 
+//---------------------LOGIC---------------------//
 <script>
 import ContactList from '@/components/ContactList'
 

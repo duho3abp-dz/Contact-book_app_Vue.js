@@ -1,7 +1,8 @@
+// ---------------------RENDER---------------------//
 <template>
     <div>
         <h2>User</h2>
-        <form>
+        <form @submit.prevent="onSubmit">
             <ul class="user">
                 <li class="user-list">
                     <div class="item item-left">First name:</div>
@@ -9,9 +10,10 @@
                         <p v-if="!setting">{{user.firstName}}</p>
                         <input 
                             v-else 
-                            name="firstName" 
-                            :value="user.firstName" 
-                            type="text">
+                            name="firstName"
+                            v-model="newUser.firstName" 
+                            type="text"
+                        >
                     </div>
                 </li>
                 <li class="user-list">
@@ -20,8 +22,8 @@
                         <p v-if="!setting">{{user.lastName}}</p>
                         <input 
                             v-else 
-                            name="lastName" 
-                            :value="user.lastName" 
+                            name="lastName"
+                            v-model="newUser.lastName" 
                             type="text"
                         >
                     </div>
@@ -33,7 +35,7 @@
                         <input 
                             v-else 
                             name="phone" 
-                            :value="user.phone" 
+                            v-model="newUser.phone" 
                             type="text"
                         >
                     </div>
@@ -45,29 +47,46 @@
                         <input 
                             v-else 
                             name="email" 
-                            :value="user.email" 
+                            v-model="newUser.email" 
                             type="text"
                         >
                     </div>
                 </li>
 
                 <a class="setting-link" @click="onSettings">
-                    <img class="setting-pic" src="../assets/icons/settings.svg" alt="settings">
+                    <img class="pic" src="../assets/icons/settings.svg" alt="settings">
+                </a>
+                <a class="undo-link" @click="stepBack">
+                    <img class="pic" src="../assets/icons/undo.svg" alt="settings">
                 </a>
             </ul>
-            <input v-if="setting" class="link submit-btn" value="Confirm" type="submit">
-            <router-link v-else  class="link link-back" to="/">Contacts</router-link>
+
+
+            <div v-if="setting">
+                <a @click.prevent="onVerification" v-if="!verification" class="link confirm-btn">Confirm</a>
+                <div v-else>
+                    <p>Are you sure you want to save your changes?</p>
+                    <input class="link submit-btn" value="Yes" type="submit">
+                    <a @click="formReset" class="link link-back verific-no">No</a>
+                </div>
+            </div>
+
+            <router-link v-else  :click="$emit('change-user', this.user)" class="link link-back" to="/">Contacts</router-link>
         </form>
     </div>
 </template>
 
+//---------------------LOGIC---------------------//
 <script>
 export default {
     props: ['contacts'],
     data() {
         return {
             setting: false,
-            user: {}
+            user: {},
+            newUser: {},
+            saveUser: {},
+            verification: false
         }
     },
     mounted() {
@@ -77,16 +96,37 @@ export default {
                 corrUser = obj;
             }
         });
-        this.user = corrUser;
+        this.user = {...corrUser};
+        this.newUser = {...corrUser};
+        this.saveUser = {...corrUser};
     },
     methods: {
         onSettings() {
             this.setting = !this.setting;
+            this.newUser = {...this.user};
+        },
+        onVerification() {
+            this.verification = !this.verification;
+        },
+        onSubmit() {
+            this.user = this.newUser;
+            this.setting = false;
+            this.verification = false;
+        },
+        formReset() {
+            this.newUser = {...this.user};
+            this.setting = false;
+            this.verification = false;
+        },
+        stepBack() {
+            this.user = {...this.saveUser};
+            this.newUser = {...this.saveUser};
         }
     }
 }
 </script>
 
+//---------------------STYLE---------------------//
 <style scoped>
 .user {
     position: relative;
@@ -113,26 +153,34 @@ export default {
     width: 50%;
     margin-bottom: 10px;
 }
-.setting-link {
+.setting-link, .undo-link {
     position: absolute;
     width: 3%;
-    top: 0;
     right: 2%;
     cursor: pointer;
 }
-.setting-pic {
+.setting-link {
+    top: 0;
+}
+.undo-link {
+    top: 40%;
+}
+.pic {
     width: 100%;
     opacity: .6;
 }
-.setting-pic:hover {
+.pic:hover {
     opacity: 1;
 }
-.submit-btn {
+.submit-btn, .confirm-btn {
     display: inline-block;
     width: 30%;
     margin-bottom: 10px;
     font-size: 18px;
     font-weight: normal;
     cursor: pointer;
+}
+.verific-no {
+    width: 30%;
 }
 </style>

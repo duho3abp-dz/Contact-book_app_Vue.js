@@ -1,3 +1,4 @@
+//---------------------RENDER---------------------//
 <template>
     <li class="item">
         <router-link 
@@ -7,9 +8,11 @@
         >
             {{item.lastName}} {{item.firstName}}
         </router-link>
+        <button class="delete">&times;</button>
     </li>
 </template>
 
+//---------------------LOGIC---------------------//
 <script>
 export default {
     name: 'ContactItem',
@@ -17,10 +20,22 @@ export default {
 }
 </script>
 
+//---------------------STYLE---------------------//
 <style scoped>
 .item {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+}
+.delete {
+    font-size: 25px;
+    font-weight: 500;
+    color: #2c3e50;
+    background: #fff;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.delete:hover {
+    font-weight: 600;
 }
 </style>

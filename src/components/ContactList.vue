@@ -1,3 +1,4 @@
+//---------------------RENDER---------------------//
 <template>
     <ul>
         <ContactItem 
@@ -8,6 +9,7 @@
     </ul>
 </template>
 
+//---------------------LOGIC---------------------//
 <script>
 import ContactItem from './ContactItam'
 
