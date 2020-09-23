@@ -42,7 +42,41 @@ export default {
   overflow: hidden;
   margin-bottom: 60px;
 }
+ul {
+    list-style: none;
+    padding: 0;
+}
 h2 {
     border-bottom: 2px solid #2c3e5049;
+}
+p {
+  margin: 0;
+}
+input {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+  border: 1px solid #2c3e5049;
+  border-radius: 5px;
+  width: 60%;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 15px;
+}
+.link {
+    text-decoration: none;
+    background: #fff;
+    color: #2c3e50;
+    font-size: 20px;
+    display: block;
+    border: 1px solid #2c3e504d;
+    border-radius: 30px;
+    margin-bottom: 2px;
+    width: 90%;
+    transition: .2s;
+}
+.link:hover {
+    background: #2c3e5023;
 }
 </style>

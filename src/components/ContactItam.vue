@@ -23,18 +23,4 @@ export default {
     flex-direction: column;
     align-items: center;
 }
-.link {
-    text-decoration: none;
-    color: #2c3e50;
-    font-size: 20px;
-    display: block;
-    border: 1px solid #2c3e504d;
-    border-radius: 30px;
-    margin-bottom: 2px;
-    width: 90%;
-    transition: .2s;
-}
-.link:hover {
-    background: #2c3e5023;
-}
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <ul class="list">
+    <ul>
         <ContactItem 
             v-for="item of contacts"
             :item="item"
@@ -17,10 +17,3 @@ export default {
     components: { ContactItem }
 }
 </script>
-
-<style scoped>
-.list {
-    list-style: none;
-    padding: 0;
-}
-</style>
