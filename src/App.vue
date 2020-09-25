@@ -7,6 +7,7 @@
         :contacts="contacts" 
         @change-user="changeUser"
         @delete-user="deleteUser"
+        @add-contact="addContact"
       />
     </div>
   </div>
@@ -36,6 +37,9 @@ export default {
     },
     deleteUser(id) {
       this.contacts = this.contacts.filter(obj => obj.id !== id);
+    },
+    addContact(obj) {
+      this.contacts.push(obj);
     }
   }
 }
@@ -68,6 +72,7 @@ ul {
 }
 h2 {
     border-bottom: 2px solid #2c3e5049;
+    margin-bottom: 0;
 }
 p {
   margin: 0;
@@ -77,7 +82,10 @@ input {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   outline: none;
-  border: 1px solid #2c3e5049;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 1px solid #2c3e5049;
   border-radius: 5px;
   width: 60%;
   font-weight: 600;
@@ -98,5 +106,12 @@ input {
 }
 .link:hover {
     background: #2c3e5023;
+}
+.pic {
+    width: 100%;
+    opacity: .6;
+}
+.pic:hover {
+    opacity: 1;
 }
 </style>

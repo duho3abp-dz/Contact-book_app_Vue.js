@@ -155,7 +155,7 @@ export default {
 }
 .setting-link, .undo-link {
     position: absolute;
-    width: 3%;
+    width: 25px;
     right: 2%;
     cursor: pointer;
 }
@@ -164,13 +164,6 @@ export default {
 }
 .undo-link {
     top: 40%;
-}
-.pic {
-    width: 100%;
-    opacity: .6;
-}
-.pic:hover {
-    opacity: 1;
 }
 .submit-btn, .confirm-btn {
     display: inline-block;
