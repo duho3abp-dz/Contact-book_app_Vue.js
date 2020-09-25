@@ -1,9 +1,6 @@
 //---------------------RENDER---------------------//
 <template>
     <div class="contacts-block">
-        <a class="add-link" @click="toggleAddContactWindow">
-            <img class="pic" src="../assets/icons/plus.svg" alt="plus">
-        </a>
         <h2>Contacts</h2>
         <AddContact 
             :class="{addActive: addContactActive}" 
@@ -13,6 +10,12 @@
             :contacts="contacts" 
             @delete-user="userDelete"
         />
+        <router-link class="back-link" to='/'>
+            <img class="pic" src="../assets/icons/left-arrow.svg" alt="back">
+        </router-link>
+        <a class="add-link" @click="toggleAddContactWindow">
+            <img class="pic" src="../assets/icons/plus.svg" alt="plus">
+        </a>
     </div>
 </template>
 
@@ -52,12 +55,19 @@ export default {
 .contacts-block {
     position: relative;
 }
-.add-link {
+.add-link, .back-link {
     position: absolute;
+    cursor: pointer;
+}
+.add-link {
     top: -3px;
     right: 5%;
     width: 20px;
-    cursor: pointer;
+}
+.back-link {
+    top: -7px;
+    left: 5%;
+    width: 30px;
 }
 .add-img {
     width: 100%;

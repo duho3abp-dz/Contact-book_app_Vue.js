@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <router-link v-else  :click="changeUser" class="link link-back" to="/">Contacts</router-link>
+            <router-link v-else  :click="changeUser" class="link link-back" to="/contacts">Contacts</router-link>
         </form>
     </div>
 </template>

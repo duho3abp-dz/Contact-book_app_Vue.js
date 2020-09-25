@@ -3,7 +3,7 @@
     <li class="item">
         <router-link 
             class="link" 
-            :to="{path: `/${item.id}`}"
+            :to="{path: `/contacts/${item.id}`}"
             :item="item"
         >
             {{item.lastName}} {{item.firstName}}

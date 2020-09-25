@@ -1,19 +1,12 @@
-# contact-book
+# Contact Book
 
-## Project setup
-```
-npm install
-```
+## Project description
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This SPA application is implemented using Vue.js.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Application functionality:
+- Add contact;
+- Delete contact (with confirmation);
+- Go to the contact information of a contact;
+- Editing contact information (with confirmation);
+- Undo the last change made "Step back".

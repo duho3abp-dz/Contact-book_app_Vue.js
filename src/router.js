@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Main from '@/pages/Main';
 import Contacts from '@/pages/Contacts';
 import User from '@/pages/User';
 
@@ -10,10 +11,14 @@ export default new Router({
     routes: [
         {
             path: '/',
+            component: Main
+        },
+        {
+            path: '/contacts',
             component: Contacts
         },
         {
-            path: '/:id',
+            path: '/contacts/:id',
             component: User
         }
     ]
