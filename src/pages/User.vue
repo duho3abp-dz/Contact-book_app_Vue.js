@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <router-link v-else  :click="$emit('change-user', this.user)" class="link link-back" to="/">Contacts</router-link>
+            <router-link v-else  :click="changeUser" class="link link-back" to="/">Contacts</router-link>
         </form>
     </div>
 </template>
@@ -121,6 +121,9 @@ export default {
         stepBack() {
             this.user = {...this.saveUser};
             this.newUser = {...this.saveUser};
+        },
+        changeUser() {
+            this.$emit('change-user', this.user)
         }
     }
 }

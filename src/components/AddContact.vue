@@ -4,8 +4,10 @@
         <input class="add-input" v-model="lastName" name="lastName" type="text" placeholder="Ivanov" required>
         <input class="add-input" v-model="phone" name="phone" type="text" placeholder="+(999) 999-99-99" required>
         <input class="add-input" v-model="email" name="email" type="text" placeholder="IvanIvanov@yandex.ru">
-        <input class="link link-add" type="submit" value="add">
-        <a class="add-reset" @click="clearState"><img class="pic" src="../assets/icons/delete.svg" alt="delete"></a>
+        <div class="add-footer">
+            <input class="link link-add" type="submit" value="add">
+            <a class="add-reset" @click="clearState">reset</a>
+        </div>
     </form>
 </template>
 
@@ -60,11 +62,22 @@ form {
     margin: 5px 0 5px;
     cursor: pointer;
 }
+.add-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .add-reset {
-    position: absolute;
-    top: 10%;
-    right: 4%;
-    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    margin-left: 20px;
+    font-weight: 600;
+    opacity: .6;
+    transition: .2s;
+}
+.add-reset:hover {
+    opacity: 1;
 }
 </style>
